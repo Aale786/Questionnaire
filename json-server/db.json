@@ -1,0 +1,342 @@
+{
+  "rules": [
+    {
+      "id": 1,
+      "name": "Basic Information Rule",
+      "header": "Please provide your basic information",
+      "footer": "All fields are mandatory",
+      "isActive": true,
+      "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Technical Skills Rule",
+      "header": "Technical Assessment Questions",
+      "footer": "Answer based on your experience",
+      "isActive": true,
+      "createdAt": "2024-01-15T11:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Personal Details Rule",
+      "header": "Personal Information Section",
+      "footer": "Please ensure all information is accurate",
+      "isActive": true,
+      "createdAt": "2024-01-15T12:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Experience Rule",
+      "header": "Professional Experience Questions",
+      "footer": "Provide detailed work experience",
+      "isActive": true,
+      "createdAt": "2024-01-15T13:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Education Rule",
+      "header": "Educational Background",
+      "footer": "Include all relevant qualifications",
+      "isActive": true,
+      "createdAt": "2024-01-15T14:00:00Z"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "text": "What is your full name?",
+      "type": "text",
+      "required": true,
+      "ruleId": 1,
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "text": "What is your email address?",
+      "type": "email",
+      "required": true,
+      "ruleId": 1,
+      "createdAt": "2024-01-15T10:31:00Z"
+    },
+    {
+      "id": 3,
+      "text": "Rate your Angular skills (1-5)",
+      "type": "number",
+      "required": true,
+      "ruleId": 2,
+      "min": 1,
+      "max": 5,
+      "createdAt": "2024-01-15T11:30:00Z"
+    },
+    {
+      "id": 4,
+      "text": "What is your phone number?",
+      "type": "text",
+      "required": true,
+      "ruleId": 3,
+      "createdAt": "2024-01-15T12:30:00Z"
+    },
+    {
+      "id": 5,
+      "text": "Years of experience in development?",
+      "type": "number",
+      "required": true,
+      "ruleId": 4,
+      "min": 0,
+      "max": 50,
+      "createdAt": "2024-01-15T13:30:00Z"
+    },
+    {
+      "id": 6,
+      "text": "Highest degree obtained?",
+      "type": "text",
+      "required": true,
+      "ruleId": 5,
+      "createdAt": "2024-01-15T14:30:00Z"
+    },
+    {
+      "id": 1764409175291,
+      "text": "Tell Me about Us",
+      "type": "text",
+      "required": true,
+      "ruleId": 1,
+      "createdAt": "2025-11-29T09:39:35.291Z"
+    },
+    {
+      "id": 1764410741424,
+      "text": "Tell me your name",
+      "type": "text",
+      "required": true,
+      "ruleId": "1",
+      "createdAt": "2025-11-29T10:05:41.424Z"
+    },
+    {
+      "id": 1764410767016,
+      "text": "h",
+      "type": "text",
+      "required": true,
+      "ruleId": "1",
+      "createdAt": "2025-11-29T10:06:07.017Z"
+    },
+    {
+      "id": 1764423201408,
+      "text": "hii",
+      "type": "text",
+      "required": true,
+      "ruleId": 1,
+      "createdAt": "2025-11-29T13:33:21.408Z"
+    },
+    {
+      "id": 100,
+      "text": "What is your preferred programming language?",
+      "type": "text",
+      "required": false,
+      "ruleId": 0,
+      "createdAt": "2024-01-15T15:00:00Z"
+    },
+    {
+      "id": 101,
+      "text": "Rate your communication skills (1-10)",
+      "type": "number",
+      "required": true,
+      "ruleId": 1,
+      "min": 1,
+      "max": 10,
+      "createdAt": "2024-01-15T15:30:00Z",
+      "updatedAt": "2025-11-29T13:37:47.215Z"
+    },
+    {
+      "id": 102,
+      "text": "What is your current salary expectation?",
+      "type": "text",
+      "required": false,
+      "ruleId": 0,
+      "createdAt": "2024-01-15T16:00:00Z"
+    },
+    {
+      "id": 103,
+      "text": "Do you have any certifications?",
+      "type": "text",
+      "required": false,
+      "ruleId": 0,
+      "createdAt": "2024-01-15T16:30:00Z"
+    },
+    {
+      "id": 1764424731765,
+      "text": "Prakash",
+      "type": "Yes/No",
+      "required": false,
+      "ruleId": 1,
+      "createdAt": "2025-11-29T13:58:51.765Z",
+      "updatedAt": "2025-11-29T13:59:02.959Z"
+    }
+  ],
+  "questionnaires": [
+    {
+      "id": 1,
+      "token": "abc123",
+      "title": "Developer Assessment Form",
+      "rules": [
+        1,
+        2
+      ],
+      "isActive": true,
+      "createdAt": "2024-01-15T12:00:00Z",
+      "expiresAt": "2024-02-15T12:00:00Z"
+    },
+    {
+      "id": 1764409090292,
+      "token": "ufrmi",
+      "title": "Questionnaire for Basic Information Rule",
+      "rules": [
+        1
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:38:10.292Z",
+      "expiresAt": "2025-12-29T09:38:10.293Z"
+    },
+    {
+      "id": 1764409106242,
+      "token": "x53h0x",
+      "title": "Questionnaire for Basic Information Rule",
+      "rules": [
+        1
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:38:26.242Z",
+      "expiresAt": "2025-12-29T09:38:26.242Z"
+    },
+    {
+      "id": 1764409111768,
+      "token": "4efe1g",
+      "title": "Questionnaire for Basic Information Rule",
+      "rules": [
+        1
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:38:31.768Z",
+      "expiresAt": "2025-12-29T09:38:31.768Z"
+    },
+    {
+      "id": 1764409118472,
+      "token": "5264rn",
+      "title": "Questionnaire for Basic Information Rule",
+      "rules": [
+        1
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:38:38.472Z",
+      "expiresAt": "2025-12-29T09:38:38.472Z"
+    },
+    {
+      "id": 1764409208962,
+      "token": "28rj4",
+      "title": "Questionnaire for Technical Skills Rule",
+      "rules": [
+        2
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:40:08.962Z",
+      "expiresAt": "2025-12-29T09:40:08.962Z"
+    },
+    {
+      "id": 1764409214756,
+      "token": "9fizh",
+      "title": "Questionnaire for Technical Skills Rule",
+      "rules": [
+        2
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T09:40:14.756Z",
+      "expiresAt": "2025-12-29T09:40:14.756Z"
+    },
+    {
+      "id": 1764423727016,
+      "token": "c6f898",
+      "title": "Questionnaire for Education Rule",
+      "rules": [
+        5
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T13:42:07.016Z",
+      "expiresAt": "2025-12-29T13:42:07.016Z"
+    },
+    {
+      "id": 1764424752509,
+      "token": "ry07lrq",
+      "title": "Questionnaire for Basic Information Rule",
+      "rules": [
+        1
+      ],
+      "isActive": true,
+      "createdAt": "2025-11-29T13:59:12.509Z",
+      "expiresAt": "2025-12-29T13:59:12.509Z"
+    }
+  ],
+  "responses": [
+    {
+      "id": 1,
+      "questionnaireId": 1,
+      "token": "abc123",
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "John Doe"
+        },
+        {
+          "questionId": 2,
+          "answer": "john@example.com"
+        },
+        {
+          "questionId": 3,
+          "answer": 4
+        }
+      ],
+      "submittedAt": "2024-01-16T09:00:00Z"
+    },
+    {
+      "id": 1764409273601,
+      "questionnaireId": 1764409214756,
+      "token": "9fizh",
+      "answers": [
+        {
+          "questionId": 3,
+          "answer": 5
+        }
+      ],
+      "submittedAt": "2025-11-29T09:41:13.601Z"
+    },
+    {
+      "id": 1764424846336,
+      "questionnaireId": 1764424752509,
+      "token": "ry07lrq",
+      "answers": [
+        {
+          "questionId": 1,
+          "answer": "Prakash Mandal"
+        },
+        {
+          "questionId": 2,
+          "answer": "mandal@gmail.com"
+        },
+        {
+          "questionId": 101,
+          "answer": 9
+        },
+        {
+          "questionId": 1764409175291,
+          "answer": "Your Service is very Nice"
+        },
+        {
+          "questionId": 1764423201408,
+          "answer": "Hello"
+        },
+        {
+          "questionId": 1764424731765,
+          "answer": "yes"
+        }
+      ],
+      "submittedAt": "2025-11-29T14:00:46.336Z"
+    }
+  ]
+}

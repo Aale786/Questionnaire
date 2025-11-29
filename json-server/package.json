@@ -1,0 +1,16 @@
+{
+  "name": "questionnaire-json-server",
+  "version": "1.0.0",
+  "description": "JSON Server for Questionnaire Module APIs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,145 @@
+<div class="questionnaire-container" *ngIf="formData">
+  <div class="questionnaire-content">
+    
+    <form (ngSubmit)="onSubmit()" #responseForm="ngForm">
+      <div *ngFor="let rule of formData.rules" class="rule-section">
+        
+        <!-- Rule Header -->
+        <div class="question-card">
+          <h2 class="section-title">{{ rule.name }}</h2>
+          <p class="rule-description">{{ rule.header }}</p>
+        </div>
+
+        <!-- Questions -->
+        <div *ngFor="let question of getQuestionsByRule(rule.id)" class="question-card">
+          <div class="question-text">
+            {{ question.text }}
+            <span *ngIf="question.required" class="required">*</span>
+          </div>
+
+          <!-- Text Input -->
+          <input 
+            *ngIf="question.type === 'text'"
+            type="text"
+            [id]="'q_' + question.id"
+            [name]="'question_' + question.id"
+            [(ngModel)]="answers[question.id]"
+            [required]="question.required"
+            class="text-input"
+            placeholder="Enter your answer">
+
+          <!-- Email Input -->
+          <input 
+            *ngIf="question.type === 'email'"
+            type="email"
+            [id]="'q_' + question.id"
+            [name]="'question_' + question.id"
+            [(ngModel)]="answers[question.id]"
+            [required]="question.required"
+            class="text-input"
+            placeholder="Enter your email">
+
+          <!-- Number Input -->
+          <input 
+            *ngIf="question.type === 'number'"
+            type="number"
+            [id]="'q_' + question.id"
+            [name]="'question_' + question.id"
+            [(ngModel)]="answers[question.id]"
+            [required]="question.required"
+            [min]="question.min"
+            [max]="question.max"
+            class="text-input"
+            placeholder="Enter number">
+
+          <!-- Yes/No Radio Buttons -->
+          <div *ngIf="question.type === 'Yes/No'" class="radio-group">
+            <label class="radio-label">
+              <input 
+                type="radio" 
+                [name]="'question_' + question.id" 
+                value="yes"
+                [(ngModel)]="answers[question.id]"
+                class="radio-input">
+              <span class="radio-custom"></span>
+              Yes
+            </label>
+            <label class="radio-label">
+              <input 
+                type="radio" 
+                [name]="'question_' + question.id" 
+                value="no"
+                [(ngModel)]="answers[question.id]"
+                class="radio-input">
+              <span class="radio-custom"></span>
+              No
+            </label>
+          </div>
+
+          <!-- List Options Dropdown -->
+          <div *ngIf="question.type === 'ListOptions'" class="select-wrapper">
+            <select 
+              class="select-input"
+              [id]="'q_' + question.id"
+              [name]="'question_' + question.id"
+              [(ngModel)]="answers[question.id]"
+              [required]="question.required">
+              <option value="" disabled selected>Select an option</option>
+              <option *ngFor="let option of question.options" [value]="option">
+                {{ option }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Free Text Textarea -->
+          <textarea 
+            *ngIf="question.type === 'FreeText'"
+            [id]="'q_' + question.id"
+            [name]="'question_' + question.id"
+            [(ngModel)]="answers[question.id]"
+            [required]="question.required"
+            class="textarea-input"
+            placeholder="Enter your feedback"
+            rows="4">
+          </textarea>
+        </div>
+
+        <!-- Rule Footer -->
+        <div class="question-card" *ngIf="rule.footer">
+          <p class="footer-text">{{ rule.footer }}</p>
+        </div>
+      </div>
+
+      <!-- Thank You and Submit -->
+      <div class="thank-you-section">
+        <p class="thank-you-text">
+          Thank you for taking the time to complete this questionnaire. Your feedback is valuable to us.
+        </p>
+        <button type="submit" class="submit-btn" [disabled]="!responseForm.valid || isSubmitting">
+          {{ isSubmitting ? 'Submitting...' : 'Submit Response' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="loading" *ngIf="!formData && !error">
+  <div class="questionnaire-container">
+    <div class="questionnaire-content">
+      <div class="question-card">
+        <p>Loading form...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="error" *ngIf="error">
+  <div class="questionnaire-container">
+    <div class="questionnaire-content">
+      <div class="question-card">
+        <h2>Error</h2>
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </div>
+</div>

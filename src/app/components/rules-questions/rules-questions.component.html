@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="header">
+    <button class="generate-btn" *ngIf="selectedRuleId" (click)="submitQuestionnaire()">
+      Generate Questionnaire
+    </button>
+    <button class="add-question-btn" (click)="openAddQuestionModal()">
+      <span class="plus-icon">+</span>
+      Add Question
+    </button>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Rules Section -->
+    <div class="section rules-section">
+      <div class="section-header">Rules</div>
+      <div class="section-content">
+        <div class="rule-card" 
+             *ngFor="let rule of rules" 
+             [class.selected]="selectedRuleId === rule.id"
+             (click)="selectRule(rule.id)">
+          <h3 class="rule-title">{{ rule.name }}</h3>
+          <p class="rule-summary">{{ rule.header }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules Questions Section -->
+    <div class="section rules-questions-section">
+      <div class="section-header">Rules Questions</div>
+      <div class="section-content">
+        <div *ngIf="!selectedRuleId" class="no-selection">
+          <p>No rule selected.</p>
+        </div>
+        <div *ngIf="selectedRuleId">
+          <div class="rule-header-info">
+            <h4>Header:</h4>
+            <p>{{ getSelectedRule()?.header }}</p>
+          </div>
+          
+          <div class="questions-list" 
+               cdkDropList 
+               id="ruleQuestionsList"
+               [cdkDropListData]="getQuestionsByRule(selectedRuleId)"
+               [cdkDropListConnectedTo]="['allQuestionsList']"
+               (cdkDropListDropped)="onQuestionDrop($event)">
+            <div class="question-card" 
+                 *ngFor="let question of getQuestionsByRule(selectedRuleId)"
+                 cdkDrag>
+              <h3 class="question-title">{{ question.text }}</h3>
+              <span class="question-type">{{ question.type }}</span>
+              <div class="drag-handle" cdkDragHandle>⋮⋮</div>
+            </div>
+          </div>
+          
+          <div class="rule-footer-info">
+            <h4>Footer:</h4>
+            <p>{{ getSelectedRule()?.footer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions Section -->
+    <div class="section questions-section">
+      <div class="section-header">All Questions</div>
+      <div class="section-content" 
+           cdkDropList 
+           id="allQuestionsList"
+           [cdkDropListData]="getUnassignedQuestions()"
+           [cdkDropListConnectedTo]="['ruleQuestionsList']"
+           (cdkDropListDropped)="onQuestionDrop($event)">
+        <div *ngIf="getUnassignedQuestions().length === 0" class="no-questions">
+          <p>No unassigned questions available.</p>
+          <p>Total questions: {{ questions.length }}</p>
+        </div>
+        <div class="question-card" 
+             *ngFor="let question of getUnassignedQuestions()"
+             cdkDrag
+             (click)="assignQuestionToRule(question)"
+             [class.assignable]="selectedRuleId">
+          <h3 class="question-title">{{ question.text }}</h3>
+          <span class="question-type">{{ question.type }}</span>
+          <div class="drag-handle" cdkDragHandle>⋮⋮</div>
+          <div class="assign-btn" *ngIf="selectedRuleId">Click to assign →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<app-add-question-modal 
+  #addQuestionModal
+  (questionAdded)="onQuestionAdded()"
+  (modalClosed)="closeModal()">
+</app-add-question-modal>
